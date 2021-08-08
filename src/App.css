@@ -1,3 +1,61 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title{
+  font-size: 6rem;
+  font-weight: 800;
+  margin: 2rem 0;
+  font-family: 'Amatic SC';
+}
+.title :nth-child(1){
+  color: #F26457;
+}
+.title :nth-child(2){
+  color: #F2A81D;
+}
+.title :nth-child(3){
+  color: #4EBFAB;
+}
 .App {
   margin: 2rem 10rem ;
   display: flex;
@@ -9,21 +67,25 @@
   outline: none;
   overflow: hidden;
   border-radius: 8px;
-
-  width: 67rem;
+  width: 64rem;
+  height: 50rem;
+  position: relative;
 }
 
 .textArea{
-  background-color: #222f3e;
+  background-color: #011F32;
   height: 3.6rem;
   padding-left: 1rem;
-
+  margin: 0 12rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   display: flex;
   align-items: center;
   color: white;
 }
 .video{
   width: 67rem;
+  height: 50.2rem;
 }
 .resultArea{
   display: flex;
@@ -41,17 +103,31 @@
 }
 .button{
   border-radius: 5px;
-  border: 1px solid #222f3e;
+  border: none;
+  outline: none;
   padding: .8rem 2rem;
-  background-color: transparent;
   cursor: pointer;
+  background-color: #00CF58;
+  color: #FFFFFF;
+  box-shadow: 3px 3px 9px  lightgray;
+}
+.addNew{
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: .8rem 2rem;
+  cursor: pointer;
+  background-color: #808F99;
+  color: #FFFFFF;
+  box-shadow: 3px 3px 9px  lightgray;
 }
 .help{
   border-radius: 5px;
-  border: 1px solid #222f3e;
+  border: 1px solid #808F99;
   background-color: transparent;
   padding:.8rem;
   cursor: pointer;
+  box-shadow: 3px 3px 9px  lightgray;
 }
 .dishes{
   overflow: hidden;
@@ -60,9 +136,10 @@
   justify-content: start;
   border-radius: 5px;
   margin-bottom: 1rem;
+  box-shadow: 3px 3px 9px  lightgray;
 }
 .dishesTitleBox{
-  background-color: #222f3e;
+  background-color: #808F99;
   color: white;
   height: 3rem;
   display: flex;
@@ -70,7 +147,7 @@
   padding-left: 1rem;
 }
 .dishesItemsArea{
-  border: 1px solid #98aec7;
+  border: 1px solid #808F99;
   border-top: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -86,5 +163,13 @@
 .totalPrice{
   font-weight: 500;
   font-size: 1rem;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+
+  padding: .8rem 2rem;
+  background-color: #011F32;
+  color: #FFFFFF;
+  box-shadow: 3px 3px 9px  lightgray;
 }
