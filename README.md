@@ -1,4 +1,4 @@
-# Tensorflow Object Detection React Application
+# Tensorflow Object Detection Web App
 <p>This template app can be used for real time object detection by leveraging the Tensorflow Object Detection API, React and Tensorflow JS. 
 
 ## Steps
