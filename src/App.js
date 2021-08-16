@@ -4,23 +4,28 @@ import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import "./App.css";
 import { nextFrame } from "@tensorflow/tfjs";
-import helpIcon from './helpIcon.svg'
+import helpIcon from './icons/helpIcon.svg'
+import deleteIcon from './icons/delete.svg'
 // 2. TODO - Import drawing utility here
-import { drawRect } from "./utilities";
+import { drawRect, dishes } from "./utilities";
 
 function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const [dishesArray, setDishesArray] = useState([])
+
 
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
     const net = await tf.loadGraphModel('https://tfodfooddetection.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
 
-    // Loop and detect hands
+    // Loop and detect food
     setInterval(() => {
       detect(net);
-    }, 16.7);
+      setDishesArray(dishes());
+    }, 1000);
   };
 
   const detect = async (net) => {
@@ -50,18 +55,20 @@ function App() {
       const expanded = casted.expandDims(0)
       const obj = await net.executeAsync(expanded)
 
-      // console.log(await obj[5].array())
+      // console.log(await obj[7].array())
 
-      const boxes = await obj[1].array()
-      const classes = await obj[0].array()
-      const scores = await obj[5].array()
+      const boxes = await obj[7].array()
+      const classes = await obj[2].array()
+      const scores = await obj[6].array()
 
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
       // 5. TODO - Update drawing utility
       // drawSomething(obj, ctx)  
-      requestAnimationFrame(() => { drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx) });
+      requestAnimationFrame(() => {
+        drawRect(boxes[0], classes[0], scores[0], 0.9, videoWidth, videoHeight, ctx)
+      });
 
       tf.dispose(img)
       tf.dispose(resized)
@@ -72,7 +79,38 @@ function App() {
     }
   };
 
+  const getTotalPrice = allItem => {
+    var sum = 0
+    allItem.map(item => {
+      sum += parseInt(item.price)
+    })
+    return sum
+  }
+
+  const deleteClickHandler = id => {
+    console.log('delete with an id: ' + id)
+  }
+
   useEffect(() => { runCoco() }, []);
+  // useEffect(() => {
+  //   setDishesArray(dishes());
+  //   // setTimeout(() => {
+
+  //   // }, 1000)
+  // }, [dishesArray])
+  // setTimeout(() => {
+  //   setDishesArray(dishes());
+  // }, 1000)
+
+  console.log(dishesArray)
+
+  const getQuantity = quantity => {
+    if (quantity === 1) {
+      return ''
+    } else {
+      return `* ${quantity}`
+    }
+  }
 
   return (
     <div className='container'>
@@ -133,17 +171,30 @@ function App() {
               Dishes:
             </div>
             <div className='dishesItemsArea'>
-              <div className='dishItem'>
-                <div className='itemName'>Orange</div>
-                <div className='itemPrice'>Rs. 10</div>
-              </div>
-              <div className='dishItem'>
-                <div className='itemName'>Apple</div>
-                <div className='itemPrice'>Rs. 15</div>
-              </div>
+              {
+                dishesArray.length > 0 ? dishesArray.map((dish) => (
+                  <div className='dishRow' key={dish.name}>
+                    <div className='dishItem' >
+                      <div className='itemName'>{dish.name} {getQuantity(dish.quantity)}</div>
+                      <div className='itemPrice'>Rs. {dish.price} {getQuantity(dish.quantity)}</div>
+                    </div>
+                    <div className='deleteIcon'>
+                      <img src={deleteIcon} alt="" />
+                    </div>
+                  </div>
+
+                )) :
+                  <div className='dishItem'>
+                    <div className='itemName'>No Items</div>
+                    <div className='itemPrice'></div>
+                  </div>
+              }
             </div>
           </div>
-          <div className='totalPrice'>Total Price : Rs. 25</div>
+          <div className='totalPrice'>
+            Total Price : Rs. 45
+            {/* //{dishesArray.length > 0 ? getTotalPrice(dishesArray) : '0'} */}
+          </div>
           <button className='button'>
             <div className='text'>Checkout</div> </button>
         </div>
