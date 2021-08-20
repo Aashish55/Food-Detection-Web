@@ -36,5 +36,6 @@ This URI is available from your bucket. Select the model.json file then choose o
 <b>Step 11.</b> Start the app by running npm start.</a> 
 <pre>npm start</pre>
 <br/><br/>
-###Final Output in the APP
+
+# Final Output in the APP
 <img src="./src/screenshots/screenshot1.png"/>
