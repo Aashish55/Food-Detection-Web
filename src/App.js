@@ -82,7 +82,7 @@ function App() {
   const getTotalPrice = allItem => {
     var sum = 0
     allItem.map(item => {
-      sum += parseInt(item.price)
+      sum += parseInt(item.price) * item.quantity
     })
     return sum
   }
@@ -192,8 +192,8 @@ function App() {
             </div>
           </div>
           <div className='totalPrice'>
-            Total Price : Rs. 45
-            {/* //{dishesArray.length > 0 ? getTotalPrice(dishesArray) : '0'} */}
+            Total Price : Rs.
+            {dishesArray.length > 0 ? getTotalPrice(dishesArray) : '0'}
           </div>
           <button className='button'>
             <div className='text'>Checkout</div> </button>
