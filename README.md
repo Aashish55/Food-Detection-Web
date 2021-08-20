@@ -37,4 +37,4 @@ This URI is available from your bucket. Select the model.json file then choose o
 <pre>npm start</pre>
 <br/><br/>
 ###Final Output in the APP
-<img src="./screenshots/screenshot1.png"/>
+<img src="./src/screenshots/screenshot1.png"/>
