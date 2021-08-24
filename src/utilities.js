@@ -5,6 +5,8 @@ const labelMap = {
     3: { name: 'Lemon', color: 'lime' },
     4: { name: 'Radish', color: 'white' },
     5: { name: 'Nimki', color: 'yellow' },
+    6: { name: 'Aalu', color: 'yellow' },
+    7: { name: 'Maize', color: 'yellow' },
 }
 
 let finalArray = []
@@ -17,6 +19,8 @@ export const dishes = () => {
     var lemonCount = 0;
     var radishCount = 0;
     var nimkiCount = 0;
+    var aaluCount = 0;
+    var maizeCount = 0;
 
     for (var i = 0; i < finalArray.length; ++i) {
         if (finalArray[i] === 'Apple') {
@@ -29,6 +33,10 @@ export const dishes = () => {
             radishCount++
         } else if (finalArray[i] === 'Lemon') {
             nimkiCount++
+        } else if (finalArray[i] === 'Aalu') {
+            aaluCount++
+        } else if (finalArray[i] === 'Maize') {
+            maizeCount++
         }
     }
     var array = [
@@ -52,6 +60,14 @@ export const dishes = () => {
             name: 'Nimki',
             quantity: nimkiCount,
             price: 20
+        }, {
+            name: 'Aalu',
+            quantity: aaluCount,
+            price: 30
+        }, {
+            name: 'Maize',
+            quantity: maizeCount,
+            price: 25
         },
     ]
     array = array.filter(item => item.quantity !== 0)
@@ -103,6 +119,10 @@ const classNumberTO_classObject = number => {
             return 'Radish'
         case 5:
             return 'Nimki'
+        case 6:
+            return 'Aalu'
+        case 7:
+            return 'Maize'
         default:
             return 'I dont know'
         // case 1:
