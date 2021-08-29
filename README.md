@@ -1,6 +1,9 @@
 # Tensorflow Object Detection Web App
 <p>This template app can be used for real time object detection by leveraging the Tensorflow Object Detection API, React and Tensorflow JS. 
-
+<br>
+##Screenshot of the webapp
+  <img src='/src/screenshot/screenshot1.png' />
+<br>
 ## Steps
 <br />
 <b>Step 1.</b> Clone this repository: https://github.com/Aashish55/Food-Detection-Web
