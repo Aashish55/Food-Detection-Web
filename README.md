@@ -2,7 +2,7 @@
 <p>This template app can be used for real time object detection by leveraging the Tensorflow Object Detection API, React and Tensorflow JS. 
 <br>
 ##Screenshot of the webapp
-  <img src='/src/screenshot/screenshot1.png' />
+  <img src='/src/screenshots/screenshot1.png' />
 <br>
 ## Steps
 <br />
